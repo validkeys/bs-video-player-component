@@ -20,7 +20,9 @@ export default Ember.ObjectController.extend({
     },
 
     createComment: function(){
-      this.get("comments").pushObject({
+      // changed this from pushObject to unshift
+      // so that the comment appears at the top
+      this.get("comments").unshiftObject({
         name:     "Chris",
         time:     this.get("cursor"),
         comment:  this.get("newComment")
