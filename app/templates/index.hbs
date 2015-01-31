@@ -1,4 +1,6 @@
-{{video-player src=src width=width height=height currentTime=currentTime}}
+<h1>Current Time: {{cursor}}</h1>
+
+{{video-player src=src width=width height=height startAt=startAt cursor=cursor}}
 
 {{!-- start the video without the on="submit" here. Then show how weird theings --}}
 {{!-- happen when you submit the form then click it again --}}
@@ -14,6 +16,7 @@
   {{#each comment in comments}}
   <li {{action "scrollTo" comment.time}}>
     <strong>{{comment.name}}</strong> - {{comment.comment}}
+    <p>@ {{comment.time}}</p>
   </li>
   {{/each}}
 </ul>

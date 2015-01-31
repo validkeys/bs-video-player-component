@@ -24,9 +24,14 @@ export default Ember.Component.extend({
   // defaults
   width:        500,
   height:       320,
-  currentTime:  0,
+  startAt:      0,
   duration:     0,
 
+  // this will keep track of the current time in the video
+  // like a cursor
+  cursor:       0,
+
+  // the actual width / height of the video
   nativeWidth:  0,
   nativeHeight: 0,
 
@@ -37,8 +42,8 @@ export default Ember.Component.extend({
 
   currentTimeObserver: function(){
     // changing here as well
-    this.get('element').currentTime = this.get("currentTime");
-  }.observes('currentTime'),
+    this.get('element').currentTime = this.get("startAt");
+  }.observes('startAt'),
 
   setupTracking: function(){
     var _this = this;
@@ -58,7 +63,7 @@ export default Ember.Component.extend({
       });
 
       // now scan to the default time
-      this.currentTime = _this.get("currentTime");
+      this.currentTime = _this.get("startAt");
 
     });
   }.on('didInsertElement'),
@@ -69,6 +74,17 @@ export default Ember.Component.extend({
     this.sendAction("videoDetailsRetrieved", {
       duration: this.get("duration")
     });
-  }.observes("duration")
+  }.observes("duration"),
+
+  // first set this to .on('init')
+  // the browser will then respond with undefined is not a function
+  // this is because the video element isnt in the DOM yet
+  // so then change it to didInsertElement
+  trackingObserver: function(){
+    var _this = this;
+    this.get("element").addEventListener("timeupdate", function(){
+      _this.set("cursor", this.currentTime);
+    });
+  }.on('didInsertElement')
 
 });

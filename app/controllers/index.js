@@ -2,14 +2,15 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  currentTime: 0,
+  startAt: 0,
   duration:    0,
+  cursor:      0,
 
   newComment:  "",
 
   actions: {
     scrollTo: function(sec) {
-      this.set("currentTime", sec);
+      this.set("startAt", sec);
     },
 
     videoDetailsRetrieved: function(data) {
@@ -19,7 +20,7 @@ export default Ember.ObjectController.extend({
     createComment: function(){
       this.get("comments").pushObject({
         name:     "Chris",
-        time:     100,
+        time:     this.get("cursor"),
         comment:  this.get("newComment")
       });
       // add this in after the on="submit"

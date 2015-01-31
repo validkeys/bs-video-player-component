@@ -15,6 +15,16 @@ This branch then loads in comments on the video that, when clicked, take the use
 - add the click handlers
 - watch as now scroll to different positions
 - now create a comment and add it to the model then click it to show
+- now we need to communicate the videos current time out to the controller
+  - then we change the currentTime attribute to startAt because it's clearer
+  - then print the cursor variable out in index.hbs
+  - it has nothing, so add the cursor variable to the controller and set it to 0
+  - now the cursor variable will show 0 on the index.hbs
+  - now we pass in the cursor variable to the component
+  - now we should see the cursor live updating on the screen
+  - now update the commenting form and add the time to the print out
 
-### Step-4-Responsive
+### Step-4-QueryParams
+
+### Step-5-Responsive
 This branch then adds some CSS and computed property magic to make the video player respond to different screen sizes
