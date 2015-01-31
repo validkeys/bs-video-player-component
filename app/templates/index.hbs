@@ -11,20 +11,14 @@
   <button>Submit Comment</button>
 </form>
 
+<div class="comments-container">
 <h3>Comments</h3>
-<ul>
-  {{#each comment in comments}}
-  <li {{action "scrollTo" comment.time}}>
-    <strong>{{comment.name}}</strong> - {{comment.comment}}
-    <p>@ {{comment.time}}</p>
-  </li>
-  {{/each}}
-</ul>
-
-<button {{action "scrollTo" 10}}>10</button>
-<button {{action "scrollTo" 20}}>20</button>
-<button {{action "scrollTo" 30}}>30</button>
-
-<strong>Duration: {{duration}}</strong>
-
-{{input type="number" value=currentTime min="0" max=duration}}
+  <ul>
+    {{#each comment in comments}}
+    <li {{action "scrollTo" comment.time}}>
+      <strong>{{comment.name}}</strong> - {{comment.comment}}
+      <p>@ {{comment.time}}</p>
+    </li>
+    {{/each}}
+  </ul>
+</div>
