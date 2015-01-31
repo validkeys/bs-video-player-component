@@ -26,6 +26,7 @@ export default Ember.Component.extend({
   height:       320,
   startAt:      0,
   duration:     0,
+  responsive:   true,
 
   // this will keep track of the current time in the video
   // like a cursor
@@ -65,6 +66,11 @@ export default Ember.Component.extend({
       // now scan to the default time
       this.currentTime = _this.get("startAt");
 
+      // now set the sizes
+      if (_this.get("responsive")) {
+        _this.setSizes();
+      }
+
     });
   }.on('didInsertElement'),
 
@@ -85,6 +91,31 @@ export default Ember.Component.extend({
     this.get("element").addEventListener("timeupdate", function(){
       _this.set("cursor", this.currentTime);
     });
-  }.on('didInsertElement')
+  }.on('didInsertElement'),
+
+  // calculate a new width for the given height
+  // while maintaining aspect ratio
+  calculateResponsiveWidth: function(height) {
+    return height * this.get("aspectRatio");
+  },
+
+  setSizes: function(){
+    console.log("Setting sizes!");
+    // get the height of the containing element
+    var parentHeight = this.$().parent().outerHeight();
+    var newWidth = this.calculateResponsiveWidth(parentHeight);
+    this.setProperties({
+      width: newWidth,
+      height: parentHeight
+    });
+  },
+
+  observeSizes: function(){
+    this.$(window).bind("resize", this.setSizes.call(this));
+  }.on('didInsertElement'),
+
+  removeListeners: function(){
+    this.$("window").unbind("resize", this.setSizes.call(this));
+  }.on('willDestroyElement')
 
 });

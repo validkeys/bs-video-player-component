@@ -1,6 +1,9 @@
-<h1>Current Time: {{cursor}}</h1>
-
-{{video-player src=src width=width height=height startAt=startAt cursor=cursor}}
+<h1 class="current-time-logger">Current Time: {{cursor}}</h1>
+<div class="video-backsplash">
+  <div class="video-inner">
+    {{video-player src=src width=width height=height startAt=startAt cursor=cursor}}
+  </div>
+</div>
 
 {{!-- start the video without the on="submit" here. Then show how weird theings --}}
 {{!-- happen when you submit the form then click it again --}}
@@ -15,8 +18,7 @@
 <ul>
   {{#each comment in comments}}
   <li {{action "scrollTo" comment.time}}>
-    <strong>{{comment.name}}</strong> - {{comment.comment}}
-    <p>@ {{comment.time}}</p>
+    @{{comment.time}} - <strong>{{comment.name}}</strong> - {{comment.comment}}
   </li>
   {{/each}}
 </ul>

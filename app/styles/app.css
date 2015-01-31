@@ -1,3 +1,25 @@
 html, body {
-  margin: 20px;
+  margin:   0px;
+  padding:  0px;
+  font-family: "Helvetica Neue";
+  font-weight: 100;
+  text-align: center;
+}
+
+h1,h2,h3 {font-weight: 100;}
+
+h1.current-time-logger {
+  margin: 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.video-backsplash {
+  background: #000;
+  overflow:   hidden;
+  max-height:     90%;
+}
+
+.video-inner {
+  height: 100%;
 }
