@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  startAt: 0,
+  queryParams: ["startAt"],
+
+  startAt:     0,
   duration:    0,
   cursor:      0,
 

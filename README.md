@@ -25,6 +25,7 @@ This branch then loads in comments on the video that, when clicked, take the use
   - now update the commenting form and add the time to the print out
 
 ### Step-4-QueryParams
+- add the ability to pass the time in a query params -- like they do on youtube
 
 ### Step-5-Responsive
 This branch then adds some CSS and computed property magic to make the video player respond to different screen sizes
