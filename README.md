@@ -29,3 +29,22 @@ This branch then loads in comments on the video that, when clicked, take the use
 
 ### Step-5-Responsive
 This branch then adds some CSS and computed property magic to make the video player respond to different screen sizes
+
+
+
+### Contents
+1. Intro - going to create a video player component
+  - want to be able to pass it a source and have it render the video
+  - we want to be able to use custom buttons and actions to send the video to a specific spot
+
+2. Next - We want to be able to pass in a few more parameters to our video component to make it a little more useful
+  - preload
+  - auto play
+  - controls
+
+3. Comments - Now we want to be able to show a list of comments for this video. Each comment in our video, like soundcloud, should reference the time in the video when the comment was made. When the comment is clicked we want the video to auto-scan to that moment
+  - we also want the user to be able to create a new comment and have the time of the comment automatically recorded for them so they don't have to enter it
+
+4. Next, like youtube, we want to be able to send a link to the video to a friend. But we want them to start the video from a specific time. So we'll be looking at queryParams here
+
+5. Finally we want this video to be optionally responsive so that as I change the width an height of my browser, the video resizes and maintains it's aspect ratio.
