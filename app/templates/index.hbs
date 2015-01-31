@@ -1,6 +1,22 @@
-
-{{!-- finish off by showing how you can now add the autoplay / controls as attributes here --}}
 {{video-player src=src width=width height=height currentTime=currentTime}}
+
+{{!-- start the video without the on="submit" here. Then show how weird theings --}}
+{{!-- happen when you submit the form then click it again --}}
+{{!-- that's because it's happening on the click action --}}
+{{!-- so then add the on="submit" action--}}
+<form {{action "createComment" on="submit"}}>
+  {{input type="text" name="newComment" value=newComment}}
+  <button>Submit Comment</button>
+</form>
+
+<h3>Comments</h3>
+<ul>
+  {{#each comment in comments}}
+  <li {{action "scrollTo" comment.time}}>
+    <strong>{{comment.name}}</strong> - {{comment.comment}}
+  </li>
+  {{/each}}
+</ul>
 
 <button {{action "scrollTo" 10}}>10</button>
 <button {{action "scrollTo" 20}}>20</button>
