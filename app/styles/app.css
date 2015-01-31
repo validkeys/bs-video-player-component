@@ -15,11 +15,23 @@ h1.current-time-logger {
 }
 
 .video-backsplash {
-  background: #000;
-  overflow:   hidden;
-  max-height:     90%;
+  background:     #000;
+  overflow:       hidden;
+  max-height:     500px;
 }
 
 .video-inner {
-  height: 100%;
+  height:     100%;
+  position:   relative;
+  max-width:  900px;
+  margin:     0 auto;
+  max-height: 500px;
+}
+
+.video-player.responsive {
+  position: absolute;
+  top:  0;
+  left: 0;
+  height: auto;
+  width: 100%;
 }

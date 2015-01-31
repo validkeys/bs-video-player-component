@@ -7,6 +7,10 @@ export default Ember.Component.extend({
   videoDetailsRetrieved:  "videoDetailsRetrieved",
   tagName:                "video",
   attributeBindings:      ["width","height","controls","preload","autoplay"],
+  classNames:             ["video-player"],
+
+  // mention the difference between classNames and classNameBindings
+  classNameBindings:      ["responsive:responsive"],
 
   // So now you can see as we toggle this between true/false
   // the attribute is added/removed from the dom
@@ -68,7 +72,7 @@ export default Ember.Component.extend({
 
       // now set the sizes
       if (_this.get("responsive")) {
-        _this.setSizes();
+        _this.makeResponsive();
       }
 
     });
@@ -93,29 +97,10 @@ export default Ember.Component.extend({
     });
   }.on('didInsertElement'),
 
-  // calculate a new width for the given height
-  // while maintaining aspect ratio
-  calculateResponsiveWidth: function(height) {
-    return height * this.get("aspectRatio");
-  },
-
-  setSizes: function(){
-    console.log("Setting sizes!");
-    // get the height of the containing element
-    var parentHeight = this.$().parent().outerHeight();
-    var newWidth = this.calculateResponsiveWidth(parentHeight);
-    this.setProperties({
-      width: newWidth,
-      height: parentHeight
+  makeResponsive: function(){
+    Ember.run.once(this, function(){
+      this.$().parent().css("padding-bottom", ((this.get("nativeHeight") / this.get("nativeWidth")) * 100) + "%");
     });
-  },
-
-  observeSizes: function(){
-    this.$(window).bind("resize", this.setSizes.call(this));
-  }.on('didInsertElement'),
-
-  removeListeners: function(){
-    this.$("window").unbind("resize", this.setSizes.call(this));
-  }.on('willDestroyElement')
+  }
 
 });
