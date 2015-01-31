@@ -4,7 +4,22 @@ export default Ember.Component.extend({
 
   // the name of the action to fire
   // when the video details are retrieved
-  videoDetailsRetrieved: "videoDetailsRetrieved",
+  videoDetailsRetrieved:  "videoDetailsRetrieved",
+  tagName:                "video",
+  attributeBindings:      ["width","height","controls","preload","autoplay"],
+
+  // So now you can see as we toggle this between true/false
+  // the attribute is added/removed from the dom
+  controls:     true,
+
+  // adding in the preload
+  // add this then refresh the page... Hmm.. it's not showing up
+  // because we didn't add it to the attributeBindings array above..
+  // then add it
+  preload:      "auto", //auto, metadata, none
+
+  // whether or not to autoplay the video
+  autoplay:     true,
 
   // defaults
   width:        500,
@@ -21,12 +36,16 @@ export default Ember.Component.extend({
   }.property("nativeWidth","nativeHeight"),
 
   currentTimeObserver: function(){
-    this.$('#main-video-player').get(0).currentTime = this.get("currentTime");
+    // changing here as well
+    this.get('element').currentTime = this.get("currentTime");
   }.observes('currentTime'),
 
   setupTracking: function(){
     var _this = this;
-    this.$('#main-video-player').get(0).addEventListener("loadedmetadata", function(){
+
+    // we're now going to change this to get the element
+    // instead of this.$('#main-video-player').
+    this.get('element').addEventListener("loadedmetadata", function(){
 
       // start by just setting the duration
       // started this with "this.set"

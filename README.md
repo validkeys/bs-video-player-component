@@ -1,50 +1,16 @@
-# Video-component
+## Video Component
+An HTML5 video player component for EmberJS
+---
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+### Master Branch
+This branch gets the basic video player up and running
 
-## Prerequisites
+### Step-2-Autoload
+- This branch will deal with preloading and auto-play attributes
+- Also changing over the template for the component to set the tagName to "video" and use attributeBindings
 
-You will need the following things properly installed on your computer.
+### Step-3-Responsive
+This branch then adds some CSS and computed property magic to make the video player respond to different screen sizes
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM) and [Bower](http://bower.io/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
-
-## Running / Development
-
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+### Step-4-Timeline-Comments
+This branch then loads in comments on the video that, when clicked, take the user to the timestamp ther user was commenting on (like soundcloud comments)

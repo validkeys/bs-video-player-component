@@ -1,13 +1,6 @@
-{{video-player src=src width=width height=height currentTime=currentTime}}
 
-<h3>Comments</h3>
-<ul>
-  {{#each comment in comments}}
-  <li {{action "scrollTo" comment.time}}>
-    <strong>{{comment.name}}</strong> - {{comment.comment}}
-  </li>
-  {{/each}}
-</ul>
+{{!-- finish off by showing how you can now add the autoplay / controls as attributes here --}}
+{{video-player src=src width=width height=height currentTime=currentTime}}
 
 <button {{action "scrollTo" 10}}>10</button>
 <button {{action "scrollTo" 20}}>20</button>
